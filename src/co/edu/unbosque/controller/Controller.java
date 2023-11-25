@@ -1,9 +1,16 @@
 package co.edu.unbosque.controller;
 
+import co.edu.unbosque.view.HorseJumpView;
+import co.edu.unbosque.view.MainView;
+
 public class Controller {
+	
+	private MainView mv;
+	
 
 	public Controller() {
-		System.out.println("Hola mundo");
+		
+		mv = new MainView();
 	}
 
 }
