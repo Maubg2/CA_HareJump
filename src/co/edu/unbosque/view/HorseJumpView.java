@@ -14,6 +14,10 @@ public class HorseJumpView extends JPanel{
 	private JLabel title;
 	private JLabel labInpN;
 	private JTextField inpN;
+	private JLabel labInpX;
+	private JLabel labInpY;
+	private JTextField inpX;
+	private JTextField inpY;
 	private JTextArea out;
 	private JButton execute;
 	private JButton exit;
@@ -33,7 +37,7 @@ public class HorseJumpView extends JPanel{
 		title = new JLabel("Horse Jump");
 		title.setFont(new Font("Cooper black", Font.BOLD, 20));
 		title.setForeground(Color.BLACK);
-		title.setBounds(180, 40, 300, 30);
+		title.setBounds(180, 30, 300, 30);
 		add(title);
 		
 		labInpN = new JLabel("Enter the value of n: ");
@@ -43,11 +47,31 @@ public class HorseJumpView extends JPanel{
 		add(labInpN);
 		
 		inpN = new JTextField("");
-		inpN.setBounds(300, 100, 50, 30);
+		inpN.setBounds(300, 100, 50, 25);
 		add(inpN);
 		
+		labInpX = new JLabel("Enter the starting position (X): ");
+		labInpX.setFont(new Font("Arial", Font.ITALIC, 15));
+		labInpX.setForeground(Color.BLACK);
+		labInpX.setBounds(70, 140, 300, 30);
+		add(labInpX);
+		
+		labInpY = new JLabel("Enter the starting position (Y): ");
+		labInpY.setFont(new Font("Arial", Font.ITALIC, 15));
+		labInpY.setForeground(Color.BLACK);
+		labInpY.setBounds(70, 190, 300, 30);
+		add(labInpY);
+		
+		inpX = new JTextField("");
+		inpX.setBounds(300, 140, 50, 25);
+		add(inpX);
+		
+		inpY = new JTextField("");
+		inpY.setBounds(300, 190, 50, 25);
+		add(inpY);
+		
 		out = new JTextArea("");
-		out.setBounds(150, 180, 200, 150);
+		out.setBounds(150, 240, 200, 100);
 		out.setEditable(false);
 		add(out);
 		
@@ -67,6 +91,22 @@ public class HorseJumpView extends JPanel{
 
 	public JTextField getInpN() {
 		return inpN;
+	}
+	
+	public JTextField getInpX() {
+		return inpX;
+	}
+
+	public void setInpX(JTextField inpX) {
+		this.inpX = inpX;
+	}
+
+	public JTextField getInpY() {
+		return inpY;
+	}
+
+	public void setInpY(JTextField inpY) {
+		this.inpY = inpY;
 	}
 
 	public void setInpN(JTextField inpN) {
