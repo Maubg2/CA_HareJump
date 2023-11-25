@@ -5,32 +5,21 @@ public class HorseJump {
     // Definición de variables miembro
     
     public int N = 8;  // Tamaño del tablero de ajedrez
-    
     private int n;  // Tamaño del tablero de ajedrez más 1
-    
     private int[][] board;  // Matriz que representa el tablero de ajedrez
-    
     private boolean success;  // Variable para indicar si se ha encontrado una solución
-    
     private int[][] jump = {{2, 1}, {1, 2}, {-1, 2}, {-2, 1},
                             {-2, -1}, {-1, -2}, {1, -2}, {2, -1}};  // Posibles movimientos del caballo
-    
     private int x0, y0;  // Posición inicial del caballo en el tablero
-    
+
     // Constructor de la clase
-    
     public HorseJump(int x, int y) throws Exception {
-        
         n = (N + 1);
-        
         board = new int[n][n];  // Inicializa la matriz del tablero
         
         // Verifica que la posición inicial esté dentro del rango del tablero
-        
         if ((x < 1) || (x > N) || (y < 1) || (y > N)) {
-            
             throw new Exception("Out of range.");
-            
         }
         
         x0 = x;
@@ -45,7 +34,6 @@ public class HorseJump {
         }
         
         board[x0][y0] = 1;  // Marca la posición inicial como visitada
-        
         success = false;  // Inicializa la variable de éxito
         
     }
@@ -53,7 +41,6 @@ public class HorseJump {
     // Método para resolver el problema del salto del caballo
     
     public boolean solve() {
-        
         hop(x0, y0, 2);
         return success;
     }
@@ -61,7 +48,7 @@ public class HorseJump {
     // Método recursivo para realizar el salto del caballo
     
     private void hop(int x, int y, int i) {
-        
+       
         int nx, ny;
         int k;
         k = 0;
