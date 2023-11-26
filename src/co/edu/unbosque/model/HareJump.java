@@ -1,5 +1,8 @@
 package co.edu.unbosque.model;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 import javax.swing.JOptionPane;
 
 public class HareJump {
@@ -89,6 +92,12 @@ public class HareJump {
 		//This is the jump possibility, so, 0 is the first possible jump in "jumps" matrix, 1 is the second possible jump.
 		int k = 0;
 		
+		//----- OPTIMIZATION
+		//This priority queue stores all the next possible steps ordered by its distance to the target point, in order to look first at the closest point.
+		PriorityQueue<Cell> queue = new PriorityQueue<>(Comparator.comparingInt(a -> (a.getDistance() + heuristic(a.getX(), a.getY(), endX, endY))));
+		queue.add(new Cell(x, y, heuristic(x, y, endX, endY))); //Add a new cell to the queue
+		
+		
 		//Lets do the backtracking
 		do{
 			k++; //Go to the next possible jump
@@ -107,6 +116,7 @@ public class HareJump {
 				
 				//TODO: LLegará un punto que no haya un posible salto vacío (No hay solucion)
 				//TODO: Implementar Rama Y Poda (Hallar la solución más óptima, no la primera que encuentre)
+				//Heurística: (Saber una estimación de cuántos pasos faltan para llegar a la meta): |endX-nx| + |endY-ny| 
 				if(nx != endX && ny != endY){
 					//Check the next movement
 					hop(nx, ny, step + 1);
@@ -124,6 +134,18 @@ public class HareJump {
 					
 		}while(!success && k < 8);
 		
+	}
+	
+	/**
+	 * This method calculates the classic Manhattan distance, in order to have an estimated remaining steps to reach the target point
+	 * @param x The actual position in x
+	 * @param y The actual position in y
+	 * @param endX The target position in x
+	 * @param endY The target position in y
+	 * @return The Manhattan distance
+	 */
+	public int heuristic(int x, int y, int endX, int endY) {
+		return Math.abs(endX - x) + Math.abs(endY - y); //|endX-x| + |endY-y|
 	}
 	
 }
