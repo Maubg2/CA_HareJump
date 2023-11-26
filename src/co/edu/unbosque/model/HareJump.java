@@ -57,6 +57,7 @@ public class HareJump {
 
         if (nextX != -1 && nextY != -1) {
             step++;
+            System.out.println("Salto a " + nextX + ", " + nextY);
             board[nextX][nextY] = step;
             return hop(nextX, nextY, step);
         }
