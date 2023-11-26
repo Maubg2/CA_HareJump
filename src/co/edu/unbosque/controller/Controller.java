@@ -22,11 +22,9 @@ public class Controller {
     }
     
     public void execute() {
-    	HareJump jumper = new HareJump(2, 1, 4, 4, 0, 0, 3, 2);
+    	HareJump jumper = new HareJump(2, 1, 5, 5, 0, 0, 2, 2);
     	
-    	System.out.println(jumper.getSuccess());
-    	
-    	jumper.writeBoard();
+    	jumper.printBoard();
     }
 
     // Método para iniciar la aplicación
