@@ -22,7 +22,7 @@ public class Controller {
     }
     
     public void execute() {
-    	HareJump jumper = new HareJump(2, 1, 4, 4, 0, 0, 0, 2);
+    	HareJump jumper = new HareJump(2, 1, 4, 4, 0, 0, 3, 2);
     	
     	System.out.println(jumper.getSuccess());
     	

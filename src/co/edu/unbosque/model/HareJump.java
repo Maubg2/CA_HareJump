@@ -1,5 +1,6 @@
 package co.edu.unbosque.model;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -25,6 +26,8 @@ public class HareJump {
 	private boolean success;
 	
 	private int endX, endY;
+	
+	private ArrayList<Cell> steps;
 	/**
 	 * The constructor receives the p & q parameters, that will define the movement of the hare.
 	 * In this method, we start the board matrix, and set up the possible jumps based on p & q values.
@@ -62,7 +65,7 @@ public class HareJump {
 		success = false;
 		
 		//Start the problem solution
-		success = solve(x0, y0, 2);
+		success = solve(x0, y0, 1);
 	}
 	
 	/**
@@ -142,10 +145,12 @@ public class HareJump {
 	
 	public void hop1(int x, int y, int step) {
 	    PriorityQueue<Cell> queue = new PriorityQueue<>(Comparator.comparingInt(a -> (a.getDistance() + heuristic(a.getX(), a.getY(), endX, endY))));
+	    steps = new ArrayList<>();
 	    queue.add(new Cell(x, y, heuristic(x, y, endX, endY)));
 
-	    while (!queue.isEmpty()) {
+	    while (!queue.isEmpty()) { //success == false
 	        Cell current = queue.poll();
+	        steps.add(current);
 	        x = current.getX();
 	        y = current.getY();
 
@@ -155,26 +160,28 @@ public class HareJump {
 	            success = true;
 	            return;
 	        }
-
+	        
 	        for (int k = 0; k < 8; k++) {
 	            int nx = x + jumps[k][0];
 	            int ny = y + jumps[k][1];
 
-	            System.out.println("Next position: (" + nx + ", " + ny + ")"); // Print next position
+	            System.out.println("Next possible position: (" + nx + ", " + ny + ")"); // Print next position
 
 	            if (nx >= 0 && nx < board[0].length && ny >= 0 && ny < board.length && board[nx][ny] == 0) {
 	                step++;
 	                board[nx][ny] = step;  // Increment step and assign to board
+	                System.out.println("Took a step"); //Poner if
 	                queue.add(new Cell(nx, ny, heuristic(nx, ny, endX, endY) + step));
+	                
 	            }
 	        }
+	        if (!success) {
+		        // If backtracking occurred and no success was found, reset the step
+		        step--;
+		        board[x][y] = 0;  
+		    }
 	    }
-
-	    if (!success) {
-	        // If backtracking occurred and no success was found, reset the step
-	        step--;
-	        board[x][y] = 0;
-	    }
+	    
 	}
 
 
@@ -196,6 +203,10 @@ public class HareJump {
                 System.out.print(board[i][j] + " ");
             }
             System.out.println();
+        }
+        
+        for(Cell c : steps) {
+        	System.out.println("x: " + c.getX() + "\ny: " + c.getY() + "\n");
         }
     }
 	
