@@ -3,6 +3,7 @@ package co.edu.unbosque.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import co.edu.unbosque.model.HareJump;
 import co.edu.unbosque.model.HorseJump;
 import co.edu.unbosque.view.HorseJumpView;
 import co.edu.unbosque.view.MainView;
@@ -17,6 +18,15 @@ public class Controller {
     // Constructor de la clase
     public Controller() {
         //mv = new MainView();
+    	execute();
+    }
+    
+    public void execute() {
+    	HareJump jumper = new HareJump(2, 1, 4, 4, 0, 0, 0, 2);
+    	
+    	System.out.println(jumper.getSuccess());
+    	
+    	jumper.writeBoard();
     }
 
     // Método para iniciar la aplicación

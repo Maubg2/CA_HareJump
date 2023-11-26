@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 public class HareJump {
 	
+	private int[][] prueba = new int[8][8];
+	
 	/**
 	 * This attribute is going to store the possible jumps that the hare can do.
 	 */
@@ -71,7 +73,7 @@ public class HareJump {
 	 * @return success
 	 */
 	public boolean solve(int x0, int y0, int pos) {
-		hop(x0, y0, pos);
+		hop1(x0, y0, pos);
 		return success;
 	}
 	
@@ -135,6 +137,67 @@ public class HareJump {
 		}while(!success && k < 8);
 		
 	}
+
+
+	
+	public void hop1(int x, int y, int step) {
+	    PriorityQueue<Cell> queue = new PriorityQueue<>(Comparator.comparingInt(a -> (a.getDistance() + heuristic(a.getX(), a.getY(), endX, endY))));
+	    queue.add(new Cell(x, y, heuristic(x, y, endX, endY)));
+
+	    while (!queue.isEmpty()) {
+	        Cell current = queue.poll();
+	        x = current.getX();
+	        y = current.getY();
+
+	        System.out.println("Current position: (" + x + ", " + y + ")"); // Print current position
+
+	        if (x == endX && y == endY) {
+	            success = true;
+	            return;
+	        }
+
+	        for (int k = 0; k < 8; k++) {
+	            int nx = x + jumps[k][0];
+	            int ny = y + jumps[k][1];
+
+	            System.out.println("Next position: (" + nx + ", " + ny + ")"); // Print next position
+
+	            if (nx >= 0 && nx < board[0].length && ny >= 0 && ny < board.length && board[nx][ny] == 0) {
+	                step++;
+	                board[nx][ny] = step;  // Increment step and assign to board
+	                queue.add(new Cell(nx, ny, heuristic(nx, ny, endX, endY) + step));
+	            }
+	        }
+	    }
+
+	    if (!success) {
+	        // If backtracking occurred and no success was found, reset the step
+	        step--;
+	        board[x][y] = 0;
+	    }
+	}
+
+
+
+	
+	public void escribirPrueba() {
+		for (int i = 0; i <= 7; i++) {
+            for (int j = 0; j <= 7; j++) {
+                System.out.print(prueba[i][j] + " ");
+            }
+            System.out.println();
+        }
+	}
+
+
+	public void writeBoard() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 	
 	/**
 	 * This method calculates the classic Manhattan distance, in order to have an estimated remaining steps to reach the target point
@@ -146,6 +209,22 @@ public class HareJump {
 	 */
 	public int heuristic(int x, int y, int endX, int endY) {
 		return Math.abs(endX - x) + Math.abs(endY - y); //|endX-x| + |endY-y|
+	}
+
+	public int[][] getBoard() {  
+		return board;
+	}
+
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
+
+	public boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 	
 }

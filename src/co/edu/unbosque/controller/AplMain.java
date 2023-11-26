@@ -6,7 +6,7 @@ public class AplMain {
 		
 		Controller c = new Controller();
 		
-		c.startup();
+	//	c.startup();
 		
 	}
 
