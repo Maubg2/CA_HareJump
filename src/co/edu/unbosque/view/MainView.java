@@ -4,7 +4,8 @@ import javax.swing.JFrame;
 
 public class MainView extends JFrame{
 
-	private HorseJumpView hjv;
+	private HareJumpView hj;
+	private WriteTable wt;
 	
 	public MainView() {
 	
@@ -22,18 +23,30 @@ public class MainView extends JFrame{
 
 	private void execute() {
 		// TODO Auto-generated method stub
-		hjv = new HorseJumpView();
-		hjv.setBounds(0, 0, 550, 450);
-		getContentPane().add(hjv);
+		hj = new HareJumpView();
+		hj.setBounds(0, 0, 550, 450);
+		getContentPane().add(hj);
 		
+		wt = new WriteTable();
+		wt.setBounds(0, 0, 500, 400);
+		getContentPane().add(wt);
+	}
+	
+
+	public HareJumpView getHj() {
+		return hj;
 	}
 
-	public HorseJumpView getHjv() {
-		return hjv;
+	public void setHj(HareJumpView hjv) {
+		this.hj = hjv;
 	}
 
-	public void setHjv(HorseJumpView hjv) {
-		this.hjv = hjv;
+	public WriteTable getWt() {
+		return wt;
+	}
+
+	public void setWt(WriteTable wt) {
+		this.wt = wt;
 	}
 	
 }

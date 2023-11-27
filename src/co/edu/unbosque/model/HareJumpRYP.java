@@ -4,7 +4,7 @@ import java.util.*;
 public class HareJumpRYP {
 
 	private int[][] jumps;
-    private int[][] board;
+    private Integer[][] board;
     private int endX, endY;
     private int[][] moves = {{1, 2}, {-1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}, {-2, 1}, {-2, -1}};
     private ArrayList<int[]> takenSteps;
@@ -13,7 +13,7 @@ public class HareJumpRYP {
         this.endX = endX;
         this.endY = endY;
         jumps = new int[][]{{p, q}, {q, p}, {-q, p}, {-p, q}, {-p, -q}, {-q, -p}, {q, -p}, {p, -q}};
-        board = new int[n][m];
+        board = new Integer[n][m];
 
         if (x0 < 0 || x0 >= m || y0 < 0 || y0 >= n) {
             System.out.println("La posición inicial de la liebre sobrepasa los límites del tablero");
@@ -94,7 +94,7 @@ public class HareJumpRYP {
     }
 
     public void printBoard() {
-        for (int[] row : board) {
+        for (Integer[] row : board) {
             for (int cell : row) {
                 System.out.print(cell + " ");
             }
@@ -105,8 +105,27 @@ public class HareJumpRYP {
         	System.out.println(i[0] + ", " + i[1]);
         }
     }
+    
+    public int[][] retBoard(){
+    	int[][] ret = new int[board.length][board[0].length];
+    	for(int i = 0; i < board.length; i++) {
+    		for(int j = 0; j < board[i].length; j++) {
+    			ret[i][j] = board[i][j]; 
+    		}
+    	}
+    	return ret;
+    }
 
     private int heuristic(int x, int y) {
         return Math.abs(endX - x) + Math.abs(endY - y);
     }
+
+	public Integer[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(Integer[][] board) {
+		this.board = board;
+	}
+    
 }
