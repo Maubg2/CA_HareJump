@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class ShowData extends JPanel{
@@ -12,6 +13,8 @@ public class ShowData extends JPanel{
 	
 	private JButton nextStep;
 	private JButton lastStep;
+	
+	private JScrollPane scroll;
 	
 	public ShowData() {
 		
@@ -25,9 +28,11 @@ public class ShowData extends JPanel{
 	public void execute() {
 		
 		area = new JTextArea();
-		area.setBounds(30, 40, 610, 560);
+		
+		scroll = new JScrollPane(area);
+		scroll.setBounds(30, 40, 610, 560);
 		area.setEditable(false);
-		add(area);
+		add(scroll);
 	
 		nextStep = new JButton("Next");
 		nextStep.setBackground(Color.BLACK);

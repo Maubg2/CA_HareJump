@@ -12,6 +12,7 @@ public class HareJump1 {
     private int endX, endY;
     private int n, m;
     private int p, q;
+    private boolean success;
 
     public HareJump1(int n, int m, int x0, int y0, int endX, int endY, int p, int q) {
         this.n = n;
@@ -28,7 +29,7 @@ public class HareJump1 {
             return;
         }
 
-        boolean success = hop(x0, y0);
+        success = hop(x0, y0);
 
         if (success) {
             System.out.println("Se encontró un camino hacia la posición final:");
@@ -128,6 +129,25 @@ public class HareJump1 {
 
         HareJump1 hareJumpAStar = new HareJump1(n, m, x0, y0, endX, endY, p, q);
     }
+
+	public int[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+   
+    
+    
 }
 
 

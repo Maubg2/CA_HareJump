@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.HareJump1;
 import co.edu.unbosque.model.HareJumpRYP;
 import co.edu.unbosque.model.HorseJump;
 import co.edu.unbosque.view.MainView;
@@ -15,7 +16,7 @@ public class Controller implements ActionListener{
     
     private MainView mv;
     private HorseJump hp;
-    private HareJumpRYP ryp;
+    private HareJump1 hareJump;
 
     // Constructor de la clase
     public Controller() {
@@ -33,7 +34,7 @@ public class Controller implements ActionListener{
         int x0 = 0, y0 = 0; // Posición inicial del caballo
         int endX = 3, endY = 3; // Posición objetivo
         
-        ryp = new HareJumpRYP(p, q, n, m, x0, y0, endX, endY);
+        
         
     	//jumper.printBoard();
     }
@@ -62,28 +63,34 @@ public class Controller implements ActionListener{
     			int endX = Integer.parseInt(mv.getHj().getInpEndX().getText());
     			int endY = Integer.parseInt(mv.getHj().getInpEndY().getText());
         		
-    	    	ryp = new HareJumpRYP(p, q, n, m, x0, y0, endX, endY);
-    	    	
-    	    	StringBuilder stringBuilder = new StringBuilder();
-
-    	    	int[][] ret = ryp.getBoard();
-    	    	
-    	        for (int[] row : ret) {
-    	            for (int value : row) {
-    	                stringBuilder.append(value).append(" ");
-    	            }
-    	            stringBuilder.append("\n");
-    	        }
+    			hareJump = new HareJump1(n, m, x0, y0, endX, endY, p, q);
     	        
-    	        mv.getSd().getArea().setText(stringBuilder.toString());
+    	        if(hareJump.isSuccess()) {
+    	        	
+    	        	StringBuilder stringBuilder = new StringBuilder();
+
+        	    	int[][] ret = hareJump.getBoard();
+        	    	
+        	        for (int[] row : ret) {
+        	            for (int value : row) {
+        	               // stringBuilder.append(value).append(" ");
+        	                stringBuilder.append(String.format("%16d", (value == -1 ? 0 : value)));
+        	            }
+        	            stringBuilder.append("\n");
+        	        }
+        	        
+        	        mv.getSd().getArea().setText(stringBuilder.toString());
+    	        	
+    	        	
+    	        }else {
+    	        	JOptionPane.showMessageDialog(null, "pail");
+    	        }
+    	    	
+    	    	
     	    	
     		}catch(NumberFormatException ee) {
-    		//	mv.getHj().setVisible(true);
-    		//	mv.getSd().setVisible(true);
     			JOptionPane.showMessageDialog(null, "Insert a number");
     		}catch(NegativeArraySizeException ee) {
-    		//	mv.getHj().setVisible(true);
-    		//	mv.getSd().setVisible(true);
     			JOptionPane.showMessageDialog(null, "Insert a number");
     		}
     		
