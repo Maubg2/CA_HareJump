@@ -29,9 +29,9 @@ public class Controller implements ActionListener{
     	
     	//Condiciones del ejercicio
     	int p = 2, q = 1; // Valores de los movimientos del caballo
-        int n = 10, m = 10; // Dimensiones del tablero
+        int n = 5, m = 5; // Dimensiones del tablero
         int x0 = 0, y0 = 0; // Posición inicial del caballo
-        int endX = 8, endY = 7; // Posición objetivo
+        int endX = 3, endY = 3; // Posición objetivo
         
         ryp = new HareJumpRYP(p, q, n, m, x0, y0, endX, endY);
         
@@ -41,15 +41,15 @@ public class Controller implements ActionListener{
     public void setListeners() {
     	mv.getHj().getExecute().addActionListener(this);
     	mv.getHj().getExit().addActionListener(this);
+    	
+    	mv.getSd().getNextStep().addActionListener(this);
+    	mv.getSd().getLastStep().addActionListener(this);
     }
     
     @Override
 	public void actionPerformed(ActionEvent e) {
     	switch (e.getActionCommand()) {
     	case "Run":
-    		
-    		mv.getHj().setVisible(false);
-    		mv.getWt().setVisible(true);
     		
     		try {
     			
@@ -64,15 +64,26 @@ public class Controller implements ActionListener{
         		
     	    	ryp = new HareJumpRYP(p, q, n, m, x0, y0, endX, endY);
     	    	
-    	    	Integer[][] table = ryp.getBoard();
-    	    	String[] columnNames =  {"a", "b", "c", "d", "e"};
+    	    	StringBuilder stringBuilder = new StringBuilder();
+
+    	    	int[][] ret = ryp.getBoard();
     	    	
-    	    	mv.getWt().actualizarTabla(table, columnNames);
+    	        for (int[] row : ret) {
+    	            for (int value : row) {
+    	                stringBuilder.append(value).append(" ");
+    	            }
+    	            stringBuilder.append("\n");
+    	        }
+    	        
+    	        mv.getSd().getArea().setText(stringBuilder.toString());
     	    	
-    			
     		}catch(NumberFormatException ee) {
-    			mv.getHj().setVisible(true);
-        		mv.getWt().setVisible(false);
+    		//	mv.getHj().setVisible(true);
+    		//	mv.getSd().setVisible(true);
+    			JOptionPane.showMessageDialog(null, "Insert a number");
+    		}catch(NegativeArraySizeException ee) {
+    		//	mv.getHj().setVisible(true);
+    		//	mv.getSd().setVisible(true);
     			JOptionPane.showMessageDialog(null, "Insert a number");
     		}
     		
@@ -80,8 +91,14 @@ public class Controller implements ActionListener{
     	case "Exit":
     		System.exit(0);
     		break;
+    		
+    	case "Next":
+    		System.out.println("N");
+    		break;
+    	case "Last":
+    		System.out.println("L");
+    		break;
     	}
-    	
 	} 
 
     // Método para iniciar la aplicación

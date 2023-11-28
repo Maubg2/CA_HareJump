@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class MainView extends JFrame{
 
 	private HareJumpView hj;
-	private WriteTable wt;
+	private ShowData sd;
 	
 	public MainView() {
 	
@@ -14,9 +14,9 @@ public class MainView extends JFrame{
 		getContentPane().setLayout(null);
 		setTitle("CA");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(500, 400);
+		setSize(1200, 700);
 		setLocationRelativeTo(null);
-		setResizable(false);
+	//	setResizable(false);
 		setVisible(true);
 
 	}
@@ -24,12 +24,12 @@ public class MainView extends JFrame{
 	private void execute() {
 		// TODO Auto-generated method stub
 		hj = new HareJumpView();
-		hj.setBounds(0, 0, 550, 450);
+		hj.setBounds(0, 0, 500, 700);
 		getContentPane().add(hj);
 		
-		wt = new WriteTable();
-		wt.setBounds(0, 0, 500, 400);
-		getContentPane().add(wt);
+		sd = new ShowData();
+		sd.setBounds(500, 0, 700, 700);
+		getContentPane().add(sd);
 	}
 	
 
@@ -41,12 +41,12 @@ public class MainView extends JFrame{
 		this.hj = hjv;
 	}
 
-	public WriteTable getWt() {
-		return wt;
+	public ShowData getSd() {
+		return sd;
 	}
 
-	public void setWt(WriteTable wt) {
-		this.wt = wt;
+	public void setSd(ShowData sd) {
+		this.sd = sd;
 	}
-	
+
 }

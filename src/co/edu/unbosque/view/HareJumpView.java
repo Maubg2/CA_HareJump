@@ -49,7 +49,7 @@ public class HareJumpView extends JPanel{
 
 	private void execute() {
 		
-		title = new JLabel("Horse Jump");
+		title = new JLabel("Hare Jump");
 		title.setFont(new Font("Cooper black", Font.BOLD, 20));
 		title.setForeground(Color.BLACK);
 		title.setBounds(180, 30, 300, 30);
@@ -59,83 +59,83 @@ public class HareJumpView extends JPanel{
 		labP = new JLabel("Value of p: ");
 		labP.setFont(new Font("Arial", Font.ITALIC, 15));
 		labP.setForeground(Color.BLACK);
-		labP.setBounds(60, 100, 140, 30);
+		labP.setBounds(60, 120, 140, 30);
 		add(labP);
 		
 		inpP = new JTextField("");
-		inpP.setBounds(150, 100, 50, 25);
+		inpP.setBounds(150, 120, 50, 25);
 		add(inpP);
 		
 		labQ = new JLabel("Value of q: ");
 		labQ.setFont(new Font("Arial", Font.ITALIC, 15));
 		labQ.setForeground(Color.BLACK);
-		labQ.setBounds(240, 100, 140, 30);
+		labQ.setBounds(240, 120, 140, 30);
 		add(labQ);
 		
 		inpQ = new JTextField("");
-		inpQ.setBounds(320, 100, 50, 25);
+		inpQ.setBounds(320, 120, 50, 25);
 		add(inpQ);
 		
 		
 		labN = new JLabel("Value of n: ");
 		labN.setFont(new Font("Arial", Font.ITALIC, 15));
 		labN.setForeground(Color.BLACK);
-		labN.setBounds(60, 160, 140, 30);
+		labN.setBounds(60, 220, 140, 30);
 		add(labN);
 		
 		inpN = new JTextField("");
-		inpN.setBounds(150, 160, 50, 25);
+		inpN.setBounds(150, 220, 50, 25);
 		add(inpN);
 		
 		labM = new JLabel("Value of m: ");
 		labM.setFont(new Font("Arial", Font.ITALIC, 15));
 		labM.setForeground(Color.BLACK);
-		labM.setBounds(240, 160, 140, 30);
+		labM.setBounds(240, 220, 140, 30);
 		add(labM);
 		
 		inpM = new JTextField("");
-		inpM.setBounds(320, 160, 50, 25);
+		inpM.setBounds(320, 220, 50, 25);
 		add(inpM);
 		
 		labX0 = new JLabel("Start of X: ");
 		labX0.setFont(new Font("Arial", Font.ITALIC, 15));
 		labX0.setForeground(Color.BLACK);
-		labX0.setBounds(70, 220, 140, 30);
+		labX0.setBounds(70, 340, 140, 30);
 		add(labX0);
 		
 		inpX0 = new JTextField("");
-		inpX0.setBounds(150, 220, 50, 25);
+		inpX0.setBounds(150, 340, 50, 25);
 		add(inpX0);
 		
 		labY0 = new JLabel("Start of Y: ");
 		labY0.setFont(new Font("Arial", Font.ITALIC, 15));
 		labY0.setForeground(Color.BLACK);
-		labY0.setBounds(240, 220, 140, 30);
+		labY0.setBounds(240, 340, 140, 30);
 		add(labY0);
 		
 		inpY0 = new JTextField("");
-		inpY0.setBounds(320, 220, 50, 25);
+		inpY0.setBounds(320, 340, 50, 25);
 		add(inpY0);
 		
 		
 		labEndX = new JLabel("End of X: ");
 		labEndX.setFont(new Font("Arial", Font.ITALIC, 15));
 		labEndX.setForeground(Color.BLACK);
-		labEndX.setBounds(70, 280, 140, 30);
+		labEndX.setBounds(70, 460, 140, 30);
 		add(labEndX);
 		
 		inpEndX = new JTextField("");
-		inpEndX.setBounds(150, 280, 50, 25);
+		inpEndX.setBounds(150, 460, 50, 25);
 		add(inpEndX);
 		
 		labEndY = new JLabel("End of Y: ");
 		labEndY.setFont(new Font("Arial", Font.ITALIC, 15));
 		labEndY.setForeground(Color.BLACK);
-		labEndY.setBounds(240, 280, 140, 30);
+		labEndY.setBounds(240, 460, 140, 30);
 		add(labEndY);
 		
 		inpEndY = new JTextField("");
-		inpEndY.setBounds(320, 280, 50, 25);
+		inpEndY.setBounds(320, 460, 50, 25);
 		add(inpEndY);
 		
 		
@@ -144,13 +144,13 @@ public class HareJumpView extends JPanel{
 		execute = new JButton("Run");
 		execute.setBackground(Color.BLACK);
 		execute.setForeground(Color.WHITE);
-		execute.setBounds(312, 320, 70, 30);
+		execute.setBounds(312, 580, 70, 30);
 		add(execute);
 		
 		exit = new JButton("Exit");
 		exit.setBackground(Color.BLACK);
 		exit.setForeground(Color.WHITE);
-		exit.setBounds(142, 320, 70, 30);
+		exit.setBounds(142, 580, 70, 30);
 		add(exit);
 		
 	}

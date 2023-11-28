@@ -82,4 +82,12 @@ public class HareJump {
         return Math.abs(endX - x) + Math.abs(endY - y);
     }
 
+	public int[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
+
 }

@@ -4,7 +4,7 @@ import java.util.*;
 public class HareJumpRYP {
 
 	private int[][] jumps;
-    private Integer[][] board;
+    private int[][] board;
     private int endX, endY;
     private int[][] moves = {{1, 2}, {-1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}, {-2, 1}, {-2, -1}};
     private ArrayList<int[]> takenSteps;
@@ -13,7 +13,7 @@ public class HareJumpRYP {
         this.endX = endX;
         this.endY = endY;
         jumps = new int[][]{{p, q}, {q, p}, {-q, p}, {-p, q}, {-p, -q}, {-q, -p}, {q, -p}, {p, -q}};
-        board = new Integer[n][m];
+        board = new int[n][m];
 
         if (x0 < 0 || x0 >= m || y0 < 0 || y0 >= n) {
             System.out.println("La posición inicial de la liebre sobrepasa los límites del tablero");
@@ -94,7 +94,7 @@ public class HareJumpRYP {
     }
 
     public void printBoard() {
-        for (Integer[] row : board) {
+        for (int[] row : board) {
             for (int cell : row) {
                 System.out.print(cell + " ");
             }
@@ -120,11 +120,11 @@ public class HareJumpRYP {
         return Math.abs(endX - x) + Math.abs(endY - y);
     }
 
-	public Integer[][] getBoard() {
+	public int[][] getBoard() {
 		return board;
 	}
 
-	public void setBoard(Integer[][] board) {
+	public void setBoard(int[][] board) {
 		this.board = board;
 	}
     
